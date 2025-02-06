@@ -1,0 +1,55 @@
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id        String   @id @default(cuid())
+  email     String   @unique
+  password  String
+  name      String
+  role      String
+  createdAt DateTime @default(now())
+  courses   Course[] @relation("Teaches")
+  enrollments Enrollment[] @relation("Enrolls")
+  progress    Progress[] @relation("Tracks")
+}
+
+model Course {
+  id          String   @id @default(cuid())
+  title       String
+  description String?
+  instrument  String
+  teacher     User     @relation("Teaches", fields: [teacherId], references: [id])
+  teacherId   String
+  level       String
+  schedule    String
+  capacity    Int
+  enrollments Enrollment[] @relation("Contains")
+  progress    Progress[] @relation("Tracks")
+}
+
+model Enrollment {
+  id            String   @id @default(cuid())
+  student       User     @relation("Enrolls", fields: [studentId], references: [id])
+  studentId     String
+  course        Course   @relation("Contains", fields: [courseId], references: [id])
+  courseId      String
+  enrollmentDate DateTime
+  status        String
+  progress      Progress[] @relation("Tracks")
+
+  @@unique([studentId, courseId]) // Contrainte d'unicité ajoutée
+}
+
+model Progress {
+  id        String   @id @default(cuid())
+  student   User     @relation("Tracks", fields: [studentId], references: [id])
+  studentId String
+  course    Course   @relation("Tracks", fields: [courseId], references: [id])
+  courseId  String
+  date      DateTime
+  evaluation String?
+  comments  String?
+  enrollment Enrollment @relation("Tracks", fields: [studentId, courseId], references: [studentId, courseId])
+}
