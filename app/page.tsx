@@ -1,13 +1,12 @@
 import { ArrowRightIcon } from '@heroicons/react/24/outline';
 import Link from 'next/link';
-import { lusitana } from '@/app/ui/fonts'; // Correct path to your font
+import { lusitana } from '@/app/ui/fonts'; 
 import Image from 'next/image';
 
 export default function Page() {
   return (
     <main className="flex min-h-screen flex-col p-6 bg-gray-100">
       <div className="flex h-20 shrink-0 items-center justify-center rounded-lg bg-blue-500 p-4 md:h-24">
-        {/* You can add something in the header if you want */}
       </div>
 
       <div className="mt-8 flex-grow flex flex-col gap-8 md:flex-row md:items-center">
@@ -38,12 +37,12 @@ export default function Page() {
 
         <div className="md:w-1/2 flex justify-center items-center">
           <Image
-            src="/images/hero-image.jpg" // Make sure the path is correct
+            src="/images/hero-image.jpg" 
             alt="Image de MusiLearn"
             width={600}
             height={400}
             className="rounded-lg shadow-lg"
-            priority // Add priority for faster loading of hero image
+            priority 
           />
         </div>
       </div>
