@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import { redirect } from 'next/navigation';
-import { registerUser } from '../../db'; // Import your registration function
+import { registerUser } from '../../db';
 
 export default function RegisterPage() {
   const [error, setError] = useState<string | null>(null);

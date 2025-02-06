@@ -39,7 +39,7 @@ model Enrollment {
   status        String
   progress      Progress[] @relation("Tracks")
 
-  @@unique([studentId, courseId]) // Contrainte d'unicité ajoutée
+  @@unique([studentId, courseId]) // Unicité ID etudiant
 }
 
 model Progress {

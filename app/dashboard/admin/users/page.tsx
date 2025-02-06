@@ -1,7 +1,6 @@
 import { PrismaClient } from '@prisma/client';
-import prisma from '@/app/lib/prisma'; // Keep this import
+import prisma from '@/app/lib/prisma'; 
 
-// Remove this line:  const prisma = new PrismaClient();  // REMOVE THIS
 
 interface User {
   id: string;

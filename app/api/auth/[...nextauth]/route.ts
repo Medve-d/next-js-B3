@@ -53,11 +53,11 @@ const authOptions: NextAuthOptions = {
     }),
   ],
   session: {
-    strategy: 'database', // Changed to 'database'
+    strategy: 'database',
   },
-  // Removed jwt configuration
+
   callbacks: {
-    async session({ session, user }) { // Changed to 'user' parameter
+    async session({ session, user }) { 
       if (session?.user && user) {
         session.user.id = user.id;
         session.user.role = user.role;
