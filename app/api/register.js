@@ -16,7 +16,7 @@ export default async function handler(req, res) {
     return res.status(400).json({ message: "Tous les champs sont requis" });
   }
 
-  const { data: existingUser, error: findError } = await supabase
+  const { data: existingUser } = await supabase
     .from("users")
     .select("id")
     .eq("email", email)

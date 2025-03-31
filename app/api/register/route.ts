@@ -29,7 +29,7 @@ export async function POST(req: Request) {
     }
 
     return NextResponse.json({ message: "Utilisateur créé avec succès!" });
-  } catch (error) {
+  } catch {
     return NextResponse.json({ message: "Erreur serveur" }, { status: 500 });
   }
 }
